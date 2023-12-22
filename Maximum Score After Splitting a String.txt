@@ -1,0 +1,21 @@
+class Solution {
+public:
+    
+    int maxScore(string s) {
+        int onesCount = count(s.begin(), s.end(), '1');
+        
+        int result = 0;
+        int zerosCount = 0;
+        for (int i = 0; i < s.size() - 1; i++) {
+            if (s[i] == '1') {
+                onesCount--;
+            } else {
+                zerosCount++;
+            }
+            
+            result = max(result, zerosCount + onesCount);
+        }
+        
+        return result;
+    }
+};
