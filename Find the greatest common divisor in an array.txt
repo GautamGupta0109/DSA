@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int findGCD(vector<int>& nums) {
+        if(nums.size() == 1){
+            return nums[0];
+        }
+
+        if(nums.size() == 2 && nums[0] == nums[1]){
+            return nums[0];
+        }   
+
+        int n = nums.size();
+        sort(nums.begin() , nums.end());
+        
+        int first = nums[0];
+        int last = nums[n-1];
+        int ans = 0;
+        
+        for(int i = 1 ; i<=last ; i++){
+            if(first%i == 0 && last%i == 0){
+                ans = i;
+                cout<<ans;
+            }
+        }
+        return ans;
+        
+    }
+};
