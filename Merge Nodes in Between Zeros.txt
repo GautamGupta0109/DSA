@@ -1,0 +1,39 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* mergeNodes(ListNode* head) {
+        if(head == NULL){
+            return NULL;
+        }
+
+        // whenever we get Oth node -> point prev to that with value = sum
+        ListNode* prev = head, *curr = head->next;
+        int sum = 0;
+        while(curr != NULL){
+            if(curr->val != 0){
+                sum += curr->val;
+            }
+            else{
+                curr->val = sum;
+                sum = 0;
+                prev->next = curr;
+                prev = curr;
+            }
+            curr = curr->next;
+        }
+
+        // because initially prev was poining to 0th value node 
+        head = head -> next; 
+
+        return head;
+    }
+};
