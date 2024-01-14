@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<int> nextLargerNodes(ListNode* head) {
+        ListNode *temp = head;
+        vector<int> v;
+        while(head)
+        {
+            int curr_val = head -> val;
+            temp = head;
+            while(temp)
+            {
+                if(temp -> val > curr_val)
+                {
+                    v.push_back(temp -> val);
+                    break;
+                }
+                temp = temp -> next;
+            }
+            if(temp == NULL)
+                v.push_back(0);
+            head = head -> next;
+        }
+        return v;   
+    }
+};
