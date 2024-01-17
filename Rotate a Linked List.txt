@@ -1,0 +1,31 @@
+
+class Solution
+{
+    public:
+    Node* Getlast(Node* head){
+        Node* temp = head;
+        
+        while(temp->next != NULL){
+            temp = temp->next;
+        }
+        
+        return temp; 
+    }
+    
+    Node* rotate(Node* head, int k)
+    {
+        Node* last = Getlast(head);
+        Node* temp = head;
+        
+        int i = 0;
+        while(i < k){
+            last->next = temp;
+            last = temp;
+            temp = temp->next;
+            last->next = NULL;
+            i++;
+        }
+        
+        return temp;
+    }
+};
