@@ -1,0 +1,17 @@
+class Solution {
+public:
+    vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
+        vector<int> result;
+
+        for (int c=0; c<mat[0].size()+1; c++)
+            for (int r=0; r<mat.size(); r++)
+                if (mat[r][0] != -1 && (c == mat[0].size() || mat[r][c] == 0)) {
+                    result.push_back(r);
+                    mat[r][0] = -1;
+                    if (result.size() == k)
+                        return result;
+                }
+
+        return result;
+    }
+};
