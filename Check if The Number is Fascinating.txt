@@ -1,0 +1,33 @@
+class Solution {
+public:
+    bool isFascinating(int n) {
+
+        int doubl = n*2;
+        int tripple = n*3;   
+
+        string s1 = to_string(n);
+        string s2 = to_string(doubl);
+        string s3 = to_string(tripple);
+
+        string s = s1+s2+s3;
+
+        int len = s.length();
+
+        sort(s.begin() , s.end());
+
+        cout<<"S "<<s<<endl;
+
+        for(int i = 0 ; i<len ; i++){
+            if(s[i] == '0'){
+                return false;
+            }
+
+            if(s[i] == s[i+1]){
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+};
