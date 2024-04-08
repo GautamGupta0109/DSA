@@ -1,0 +1,38 @@
+
+class Solution {
+public:
+    int countStudents(vector<int>& students, vector<int>& sandwiches) {
+        int cone = 0, czero = 0;
+        for(int i = 0 ; i<students.size() ; i++) {
+            
+            if(students[i] ==  1){
+                cone++;
+            }
+            else{
+                czero++;
+            }
+        }
+        
+        for(int i = 0; i < sandwiches.size(); i++) {
+            
+            int val = sandwiches[i];
+            if(val == 0) {
+                
+                if(czero == 0) {
+                    
+                    return sandwiches.size() - i;
+                }
+                czero--;
+            } else {
+                
+                if(cone == 0) {
+                    
+                    return sandwiches.size() - i;
+                }
+                cone--;
+            }
+        }
+        
+        return 0;
+    }
+};
