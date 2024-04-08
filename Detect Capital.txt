@@ -1,0 +1,38 @@
+class Solution {
+public:
+    bool detectCapitalUse(string word) {
+        
+        int firstletter = 0;
+        int allletter = 0;
+        int smallletter = 0;
+
+        int i = 0;
+
+        while(i < word.length()){
+            if(i == 0 && (word[i] >= 'A' && word[i] <= 'Z')){
+                firstletter = 1;
+            }
+            else if(word[i] >= 'A' && word[i] <= 'Z'){
+                allletter++;
+            }
+            else{
+                smallletter++;
+            }
+            
+            i++;
+        }
+
+        if(firstletter == 1){
+            if(allletter == word.size() -1){
+                return true;
+            }
+            else if(smallletter == word.size() - 1){
+                return true;
+            }
+        }
+        else if(smallletter == word.size()){
+            return true;
+        }
+        return false;
+    }
+};
