@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int help(vector<int>& nums){
+        int ret = 0;
+        int temp = INT_MAX;
+
+        for(int i = 0 ; i < nums.size() ; i++){
+            if(nums[i] < temp){
+                ret = i;
+                temp = nums[i];
+            }
+        }
+        return ret;
+    }
+    vector<int> getFinalState(vector<int>& nums, int k, int multiplier) {
+
+        for(int i = 0 ; i<k ; i++){
+            int index = help(nums);
+            nums[index] = nums[index] * multiplier;
+        }
+        return nums;
+    }
+};
